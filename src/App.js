@@ -7,7 +7,7 @@ export default class extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            apiKey : '888396efbfb7afd76d04294acddbf3b6',
+            apiKey : 'YOUR API KEY',
             place : 'Tokyo,jp',
             city: '',
             response : []
