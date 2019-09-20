@@ -1,22 +1,21 @@
 import React from 'react';
 import axios from "axios";
 
-const GEOCODE_ENDPOINT = 'http://api.openweathermap.org/data/2.5/forecast';
+const API_ENDPOINT = 'http://api.openweathermap.org/data/2.5/forecast';
 
 export default class extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            apiKey : 'YOUR API KEY',
+            apiKey : 'YOUR_API_KEY',
             place : 'Tokyo,jp',
             city: '',
             response : []
         };
     }
-    handleGetLatAndLng(){
-        // Google Maps APIが指定した必須パラメータ(この場合はaddress)をparamsに渡す。
+    handleGetWeather(){
         axios
-            .get(GEOCODE_ENDPOINT, {
+            .get(API_ENDPOINT, {
                 params: {
                     q: this.state.place,
                     APPID: this.state.apiKey
@@ -39,8 +38,8 @@ export default class extends React.Component {
                 <h1 className="app-title">Weather report</h1>
                 <input
                     type="button"
-                    value="経度・緯度を検索"
-                    onClick={() => this.handleGetLatAndLng()}
+                    value="Search"
+                    onClick={() => this.handleGetWeather()}
                 />
                 <p> Location: {this.state.city} </p>
                 {Object.keys(this.state.response).map(key => (
